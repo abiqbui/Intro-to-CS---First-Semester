@@ -1,3 +1,8 @@
+# Name: Abigail Bui
+# Period: 7
+# Assignment: With HW
+# Time Spent: 
+
 
 entries = int("How many entries are being entered?")
 
