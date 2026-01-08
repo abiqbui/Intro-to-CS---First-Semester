@@ -1,6 +1,6 @@
 # Name: Abigail Bui
 # Period: 7
-# Assignment: With HW
+# Assignment: Week 1 HW - With
 # Time Spent: 
 
 
