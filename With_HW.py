@@ -1,26 +1,20 @@
 # Name: Abigail Bui
 # Period: 7
 # Assignment: Week 1 HW - With
-# Time Spent: 
+# Time Spent: 2 class periods
 
 
-entries = int("How many entries are being entered?")
 
-step-file = open('step_count_tracker.txt', 'w')
+entries = int(input("How many entries are being entered?"))
 
-for num in range(1, entries + 1):
-  entry = input('#{num} What would you like to add to the file?')
-  step-file.write(f'{entry}\n')
-step-file.close()
+with open('step_count_tracker.txt', 'a') as file_var, open('step_count_tracker.txt', 'r') as file_rd:
+  for num in range(1, entries + 1):
+    entry = input(f'#{num} What would you like to add to the file?')
+    file_var.write(f'{entry}\n')
+  line = file_rd.readline()
+  sum = 0
+  while line != "" :
+    sum += int(line)
+    line = file_rd.readline()    
 
-
-step-file = open('step_count_tracker.txt', 'r')
-line = step-list.readline()
-sum = 0
-
-while line = !'' :
-  sum += int(line)
-  line = step-file.readline()
-  
-step-file.close()
-print(f'There are {sum} total entries')
+print(f"You've competed a total of {sum} steps so far!")
