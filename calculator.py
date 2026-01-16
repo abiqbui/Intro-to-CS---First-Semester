@@ -1,15 +1,16 @@
 # Name: Abigail Bui
 # Period: 7
 # Assignment: Week 2 HW - Try/Except Records
-# Time Spent: 
+# Time Spent: 2 class periods
 
-num_1 = int(input("Enter a number: "))
-num_2 = int(input("Enter a number: "))
-operation = input("Do you want to add(+), subtract(-), multiply(*) or divide(/)? ")
-result = ""
+
 
 
 try:
+    num_1 = int(input("Enter a number: "))
+    num_2 = int(input("Enter a number: "))
+    operation = input("Do you want to add(+), subtract(-), multiply(*) or divide(/)? ")
+    result = ""
     if operation == "add" or operation == "Add" or operation == "ADD" or operation == "+" or operation == "(+)":
         result = num_1+num_2
         print(result)
@@ -23,8 +24,7 @@ try:
         result = num_1/num_2
         print(result)
     else:
-        print("Please pick one of the four options presented.")
-        operation = input("Do you want to add(+), subtract(-), multiply(*) or divide(/)? ")
+        print("Please pick one of the four options presented. Try again.")
 except ValueError:
     print("Please enter numbers. Try again.")
 except ZeroDivisionError:
@@ -39,4 +39,5 @@ else:
         math_record.write(f'{result}\n')
         print()
         print('Your calculations have been recorded in math_record.txt')
+
 
