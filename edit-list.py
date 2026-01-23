@@ -15,12 +15,13 @@ while num_of_val > 0:
 
 print(my_list)
 
-edit_list = input('Would you like to edit the list? (Yes or No) ')
-
-while edit_list == 'yes' or edit_list == 'Yes' or edit_list == 'YES':
-    value_num = int(input('What value do you want to edit? (1, 2, 3, 4, etc.) '))
-    change = input('What would you like to change this value to? ')
-    my_list[value_num-1] = change
-    print(my_list)
-    edit_list = input('Would you like to edit the list?')
+def editing():
+    edit_list = input('Would you like to edit the list? (Yes or No) ')
+    
+    while edit_list == 'yes' or edit_list == 'Yes' or edit_list == 'YES':
+        value_num = int(input('What value do you want to edit? (1, 2, 3, 4, etc.) '))
+        change = input('What would you like to change this value to? ')
+        my_list[value_num-1] = change
+        print(my_list)
+        edit_list = input('Would you like to edit the list?')
 
