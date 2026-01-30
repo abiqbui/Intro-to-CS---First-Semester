@@ -5,7 +5,10 @@
 
 import random
 
-deck = ['♠2', '♠3', '♠4', '♠5', '♠6', '♠7', '♠8', '♠9', '♠10', '♠J', '♠Q', '♠K', '♠A', '♥2', '♥3', '♥4', '♥5', '♥6', '♥7', '♥8', '♥9', '♥10', '♥J', '♥Q', '♥K', '♥A', '♣2', '♣3', '♣4', '♣5', '♣6', '♣7', '♣8', '♣9', '♣10', '♣J', '♣Q', '♣K', '♣A', '♦2', '♦3', '♦4', '♦5', '♦6', '♦7', '♦8', '♦9', '♦10', '♦J', '♦Q', '♦K', '♦A']
+deck = ['♠2', '♠3', '♠4', '♠5', '♠6', '♠7', '♠8', '♠9', '♠10', '♠J', '♠Q', '♠K', '♠A', 
+        '♥2', '♥3', '♥4', '♥5', '♥6', '♥7', '♥8', '♥9', '♥10', '♥J', '♥Q', '♥K', '♥A', 
+        '♣2', '♣3', '♣4', '♣5', '♣6', '♣7', '♣8', '♣9', '♣10', '♣J', '♣Q', '♣K', '♣A', 
+        '♦2', '♦3', '♦4', '♦5', '♦6', '♦7', '♦8', '♦9', '♦10', '♦J', '♦Q', '♦K', '♦A']
 
 play = input('Would you like to play? (Yes or no): ')
 
@@ -14,14 +17,16 @@ if play == 'yes' or play == 'YES' or play == 'Yes':
     draw = input('Enter D to draw: ')
     if draw == 'D':
         dealt = 5
+        five_cards = []
         while dealt >= 0:
-            five_cards = []
             card = random.choice(deck)
             five_cards.append(card)
-            print(card)
             deck.remove(card)
             dealt -= 1
         print(five_cards)
         choosing = int(input('What card would you like to choose? (1, 2, 3, 4, or 5): '))
         your_card = (five_cards[choosing-1])
-        print(your_card)
+        print(f"Your card is: {your_card}")
+        program_card = random.choice(deck)
+        print (f"The program drew the card: {program_card}")
+
