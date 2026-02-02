@@ -8,14 +8,14 @@ import random
 # the deck of cards
 deck = ['2 of ♠', '3 of ♠', '4 of ♠', '5 of ♠', '6 of ♠', '7 of ♠', '8 of ♠', '9 of ♠', '10 of ♠', 'a Jack of ♠', 'a Queen of ♠', 'the King of ♠', '♠A', 
         '2 of ♥', '3 of ♥', '4 of ♥', '5 of ♥', '6 of ♥', '7 of ♥', '8 of ♥', '9 of ♥', '10 of ♥', 'a Jack of ♥', 'a Queen of ♥', 'the King of ♥', '♥A', 
-        '2 of ♣', '3 of ♣', '4 of ♣', '5 of ♣', '6 of ♣', '7 of ♣', '8 of ♣', '9 of ♣', '10 0f ♣', 'a Jack of ♣', 'a Queen of ♣', 'the King of ♣', '♣A', 
+        '2 of ♣', '3 of ♣', '4 of ♣', '5 of ♣', '6 of ♣', '7 of ♣', '8 of ♣', '9 of ♣', '10 of ♣', 'a Jack of ♣', 'a Queen of ♣', 'the King of ♣', '♣A', 
         '2 of ♦', '3 of ♦', '4 of ♦', '5 of ♦', '6 of ♦', '7 of ♦', '8 of ♦', '9 of ♦', '10 of ♦', 'a Jack of ♦', 'a Queen of ♦', 'the King of ♦', '♦A']
 
 play = input('Would you like to play? (Yes or no): ') # asks if user wants to play; if yes code below executes
 
 if play == 'yes' or play == 'YES' or play == 'Yes': 
     # rule before starting
-    print("Rules of the Game: You will be dealt 5 cards. You must pick one of these 5 cards, the rest will be discarded. After you pick your card, the program, will draw a card for itself. If your chosen card is higher than the program's cardm you win!")
+    print("Rules of the Game: You will be dealt 5 cards. You must pick one of these 5 cards, the rest will be discarded. After you pick your card, the program, will draw a card for itself. If your chosen card is higher than the program's card you win!")
     # drawing 5 cards
     draw = input('Enter D to draw: ')
     if draw == 'D':
