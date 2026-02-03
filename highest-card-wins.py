@@ -15,7 +15,7 @@ play = input('Would you like to play? (Yes or no): ') # asks if user wants to pl
 
 if play == 'yes' or play == 'YES' or play == 'Yes': 
     # rule before starting
-    print("Rules of the Game: You will be dealt 5 cards. You must pick one of these 5 cards, the rest will be discarded. After you pick your card, the program, will draw a card for itself. If your chosen card is higher than the program's card you win!")
+    print("Rules of the Game: You will be dealt 5 cards. You may exchange up to 3 of these cards if you please. After you are satisfied with your 5 cards, or you have run out of exchanges, you must pick one of these 5 cards. The rest will be discarded. After you pick your card, the program, will draw a card for itself. If your chosen card is higher than the program's card you win!")
     # drawing 5 cards
     draw = input('Enter D to draw: ')
     if draw == 'D':
@@ -32,6 +32,18 @@ if play == 'yes' or play == 'YES' or play == 'Yes':
             dealt -= 1
         # prints the 5 cards the player was dealt so the player can see
         print(five_cards)
+        change = input('Would you like to exhange one of these cards for a replacement?')
+        while change == 'Yes' or change == 'YES' or change =='yes':
+            chances = 3
+            while chances > 0:
+                three_cards = int(input('What card would you like to swap? (1, 2, 3, 4, or 5): '))
+                five_cards[three_cards-1] = random.choice(deck)
+                deck.remove(five_cards[three_cards-1])
+                print(five_cards)
+                chances -= 1
+                if chances > 0:
+                    change = input('Would you like to exhange one of these cards for a replacement?')
+            change = 'no'
         # user chooses one of the cards from the 5 they are dealt
         choosing = int(input('What card would you like to choose? (1, 2, 3, 4, or 5): '))
         # takes player's choice from the list of the 5 cards
