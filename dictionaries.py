@@ -1,10 +1,9 @@
 # Name: Abigail Bui
 # Period: 7
 # Assignment: Week 7 HW - Dictionaries
-# Time Spent: 30 min
+# Time Spent: 30 min?
 
 birthdays = {}
-
 
 def adding(): # adds a new key-value to the dictionary using user input
     name = input('Enter the name of person: ')
@@ -32,6 +31,14 @@ birthday_dictionary = input('Would you like to make a list of birthdays? (Yes or
 
 while birthday_dictionary == 'yes' or birthday_dictionary == 'Yes' or birthday_dictionary == 'YES':
     add = input('Would you like to add a birthday? (Yes or no): ')
+
+while add == 'yes' or add == 'YES' or add == 'Yes':
+    adding()
+    add = input('Would you like to add another birthday? (Yes or no): ')
+else:
+    list_people()
+    list_dates()
+    clean_slate()
 
     while add == 'yes' or add == 'YES' or add == 'Yes':
         adding()
