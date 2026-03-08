@@ -1,7 +1,7 @@
 # Name: Abigail Bui
 # Period: 7
 # Assignment: Week 8 HW - Pickle Practice
-# Time Spent: 
+# Time Spent: 1 hr
 
 
 import pickle
