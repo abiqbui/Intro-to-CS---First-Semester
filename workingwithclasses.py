@@ -1,7 +1,7 @@
 # Name: Abigail Bui
 # Period: 7
 # Assignment: Week 11 HW - Working With Classes
-# Time Spent: 
+# Time Spent: 30 min
 
 from orchard import FruitTree
 
@@ -20,7 +20,6 @@ if checking_health == "Y":
     print()
 
 # checking expected yield of the trees
-
 checking_yield = input("Would you like to check the expected yield of your trees? (Y or N): ")
 if checking_yield == "Y":
     for tree in orchard_trees:
