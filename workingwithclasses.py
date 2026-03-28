@@ -3,6 +3,8 @@
 # Assignment: Week 11 HW - Working With Classes
 # Time Spent: 30 min
 
+# checking the trees in your orchard for their health and expected yield
+
 from orchard import FruitTree
 
 tree1 = FruitTree('1', '10', 'good', 'apple', '15 bushels')
