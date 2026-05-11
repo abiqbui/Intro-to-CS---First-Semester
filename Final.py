@@ -121,3 +121,38 @@ def original_work():
         
     # call the function more_books so all the functions are called and can be executed
     more_books()
+
+# tkinter testing
+
+import tkinter, tkinter.messagebox
+class MyGUI:
+    def __init__(self):
+        self.main_window = tkinter.Tk()
+
+        self.add_unread = tkinter.Button(self.main_window,
+                                        text = 'Add Unread Book',
+                                        command = self.unread_window)
+        self.add_read = tkinter.Button(self.main_window,
+                                        text = 'Add Read Book',
+                                        command = self.read_window)
+        self.see_booklist = tkinter.Button(self.main_window,
+                                        text = 'See All Books',
+                                        command = self.books_window)
+        
+        self.add_unread.pack()
+        self.add_read.pack()
+        self.see_booklist.pack()
+        tkinter.mainloop()
+
+    def unread_window(self):
+        tkinter.messagebox.showinfo('Response',
+                                    'TBD UNREAD WINDOW')
+    def read_window(self):
+        tkinter.messagebox.showinfo('Response',
+                                    'TBD READ WINDOW')
+    def books_window(self):
+        tkinter.messagebox.showinfo('Response',
+                                    'TBD BOOKS WINDOW')
+
+        
+my_gui = MyGUI()
