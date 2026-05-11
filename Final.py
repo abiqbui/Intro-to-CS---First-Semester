@@ -130,14 +130,14 @@ class MyGUI:
         self.main_window = tkinter.Tk()
 
         self.add_unread = tkinter.Button(self.main_window,
-                                        text = 'Add Unread Book',
-                                        command = self.unread_window)
+            text = 'Add Unread Book',
+            command = self.unread_window)
         self.add_read = tkinter.Button(self.main_window,
-                                        text = 'Add Read Book',
-                                        command = self.read_window)
+            text = 'Add Read Book',
+            command = self.read_window)
         self.see_booklist = tkinter.Button(self.main_window,
-                                        text = 'See All Books',
-                                        command = self.books_window)
+            text = 'See All Books',
+            command = self.books_window)
         
         self.add_unread.pack()
         self.add_read.pack()
