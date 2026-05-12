@@ -133,20 +133,34 @@ class MyGUI:
             text = 'Add Unread Book',
             command = self.unread_window)
         self.add_read = tkinter.Button(self.main_window,
-            text = 'Add Read Book',
-            command = self.read_window)
+           text = 'Add Read Book',
+           command = self.read_window)
         self.see_booklist = tkinter.Button(self.main_window,
-            text = 'See All Books',
-            command = self.books_window)
+           text = 'See All Books',
+           command = self.books_window)
         
-        self.add_unread.pack()
-        self.add_read.pack()
-        self.see_booklist.pack()
+        self.add_unread.pack(pady=5)
+        self.add_read.pack(pady=5)
+        self.see_booklist.pack(pady=5)
         tkinter.mainloop()
 
     def unread_window(self):
-        tkinter.messagebox.showinfo('Response',
-                                    'TBD UNREAD WINDOW')
+        # this is the title entry
+        root = tkinter.Tk()
+        title_label = tkinter.Label(root, text = "Title: ")
+        title_label.pack(side = "up")
+
+        title_entry = tkinter.Entry(root)
+        title_entry.pack(side = "right", pady=10)
+
+        # this is the author entry
+        author_label = tkinter.Label(root, text = "Author: ")
+        author_label.pack(side = "up")
+
+        author_entry = tkinter.Entry(root)
+        author_entry.pack(side = "righ", pady=10)
+
+        
     def read_window(self):
         tkinter.messagebox.showinfo('Response',
                                     'TBD READ WINDOW')
