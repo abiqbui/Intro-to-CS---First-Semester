@@ -147,19 +147,99 @@ class MyGUI:
     def unread_window(self):
         # this is the title entry
         root = tkinter.Tk()
+        root.geometry("300x500")
         title_label = tkinter.Label(root, text = "Title: ")
-        title_label.pack(side = "up")
+        title_label.place(x=20, y=10)
 
         title_entry = tkinter.Entry(root)
-        title_entry.pack(side = "right", pady=10)
+        title_entry.place(x=70, y=10)
 
         # this is the author entry
         author_label = tkinter.Label(root, text = "Author: ")
-        author_label.pack(side = "up")
+        author_label.place(x=20, y=40)
 
         author_entry = tkinter.Entry(root)
-        author_entry.pack(side = "righ", pady=10)
+        author_entry.place(x=70, y=40)
 
+        # this is the page # entry
+
+        pages_label = tkinter.Label(root, text = "# of Pages: ")
+        pages_label.place(x=20, y=70)
+
+        pages_entry = tkinter.Entry(root)
+        pages_entry.place(x=100, y=70)
+
+        # this is the 'who recommended' entry
+
+        who_label = tkinter.Label(root, text = "Recommended by: ")
+        who_label.place(x=20, y=100)
+
+        who_entry = tkinter.Entry(root)
+        who_entry.place(x=140, y=100)
+
+        # this is the checkbutton for genres
+        self.top_frame = tkinter.Frame(root)
+        self.bot_frame = tkinter.Frame(root)
+        
+        self.cb_var1 = tkinter.IntVar()
+        self.cb_var2 = tkinter.IntVar()
+        self.cb_var3 = tkinter.IntVar()
+        self.cb_var4 = tkinter.IntVar()
+        self.cb_var5 = tkinter.IntVar()
+        self.cb_var6 = tkinter.IntVar()
+        self.cb_var7 = tkinter.IntVar()
+        self.cb_var8 = tkinter.IntVar()
+        self.cb_var1.set(0)
+        self.cb_var2.set(0)
+        self.cb_var3.set(0)
+        self.cb_var4.set(0)
+        self.cb_var5.set(0)
+        self.cb_var6.set(0)
+        self.cb_var7.set(0)
+        self.cb_var8.set(0)
+        
+        self.cb1 = tkinter.Checkbutton(self.top_frame,
+            text = 'Romance',
+            variable = self.cb_var1)
+        self.cb2 = tkinter.Checkbutton(self.top_frame,
+            text = 'Fantasy',
+            variable = self.cb_var2)
+        self.cb3 = tkinter.Checkbutton(self.top_frame,
+            text = 'Sci-Fi',
+            variable = self.cb_var3)
+        self.cb4 = tkinter.Checkbutton(self.top_frame,
+            text = 'Thriller/Horror',
+            variable = self.cb_var4)
+        self.cb5 = tkinter.Checkbutton(self.top_frame,
+            text = 'Mystery',
+            variable = self.cb_var5)
+        self.cb6 = tkinter.Checkbutton(self.top_frame,
+            text = 'Historical Fiction',
+            variable = self.cb_var6)
+        self.cb7 = tkinter.Checkbutton(self.top_frame,
+            text = 'YA (Young Adult)',
+            variable = self.cb_var7)
+        self.cb8 = tkinter.Checkbutton(self.top_frame,
+            text = 'Nonfiction',
+            variable = self.cb_var8)
+
+        
+        self.cb1.pack()
+        self.cb2.pack()
+        self.cb3.pack()
+        self.cb4.pack()
+        self.cb5.pack()
+        self.cb6.pack()
+        self.cb7.pack()
+        self.cb8.pack()
+        self.top_frame.place(x=20, y=130)
+        self.bot_frame.place(x=20, y=310)
+
+
+
+        # this is the text for  'why to read'
+
+        
         
     def read_window(self):
         tkinter.messagebox.showinfo('Response',
@@ -170,3 +250,4 @@ class MyGUI:
 
         
 my_gui = MyGUI()
+
