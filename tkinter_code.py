@@ -69,12 +69,15 @@ class MyGUI:
     def unread_window(self):
         # this is the title entry
         root = tkinter.Tk()
-        root.geometry("300x500")
+        root.geometry("300x550")
         title_label = tkinter.Label(root, text = "Title: ")
         title_label.place(x=20, y=10)
 
         title_entry = tkinter.Entry(root)
         title_entry.place(x=70, y=10)
+
+        # get title
+        title = self.title_entry.get()
 
         # this is the author entry
         author_label = tkinter.Label(root, text = "Author: ")
@@ -82,6 +85,9 @@ class MyGUI:
 
         author_entry = tkinter.Entry(root)
         author_entry.place(x=70, y=40)
+
+        # get author
+        author = self.author_entry.get()
 
         # this is the page # entry
 
@@ -91,6 +97,9 @@ class MyGUI:
         pages_entry = tkinter.Entry(root)
         pages_entry.place(x=100, y=70)
 
+        # get pages
+        pages = self.pages_entry.get()
+
         # this is the 'who recommended' entry
 
         who_label = tkinter.Label(root, text = "Recommended by: ")
@@ -98,6 +107,9 @@ class MyGUI:
 
         who_entry = tkinter.Entry(root)
         who_entry.place(x=140, y=100)
+
+        # get who
+        who = self.who_entry.get()
 
         # this is the checkbutton for genres
 
@@ -115,6 +127,7 @@ class MyGUI:
         self.cb_var6 = tkinter.IntVar()
         self.cb_var7 = tkinter.IntVar()
         self.cb_var8 = tkinter.IntVar()
+        
         self.cb_var1.set(0)
         self.cb_var2.set(0)
         self.cb_var3.set(0)
@@ -149,6 +162,24 @@ class MyGUI:
             text = 'Nonfiction',
             variable = self.cb_var8)
 
+        # get genre(s)
+        genre = []
+        if self.cb_var1 == 1:
+            genre.append('Romance')
+        elif self.cb_var2 == 1:
+            genre.append('Fantasy')
+        elif self.cb_var3 == 1:
+            genre.append('Sci-Fi')
+        elif self.cb_var4 == 1:
+            genre.append('Thriller/Horror')
+        elif self.cb_var5 == 1:
+            genre.append('Mystery')
+        elif self.cb_var6 == 1:
+            genre.append('Historical Fiction')
+        elif self.cb_var7 == 1:
+            genre.append('YA (Young Adult)')
+        elif self.cb_var8 == 1:
+            genre.append('Nonfiction')
         
         self.cb1.pack()
         self.cb2.pack()
@@ -166,15 +197,25 @@ class MyGUI:
         why_label = tkinter.Label(root, text = "Why to read: ")
         why_label.place(x=20, y=370)
         
-        text_area = tkinter.Text(root, height=5, width=30)
-        text_area.place(x=20, y=400)
+        why_text = tkinter.Text(root, height=5, width=30)
+        why_text.place(x=20, y=400)
+
+        # get why
+        why = self.why_text.get()
+
+        # this button adds info to file and closes window
+        self.quit_button = tkinter.Button(root,
+            text = 'Enter',
+            command = root.destroy)
+        self.quit_button.place(x=20, y=500)
+
 
         tkinter.mainloop()
         
     def read_window(self):
         
         root = tkinter.Tk()
-        root.geometry("300x500")
+        root.geometry("300x550")
         title_label = tkinter.Label(root, text = "Title: ")
         title_label.place(x=20, y=10)
 
@@ -273,6 +314,12 @@ class MyGUI:
         
         notes_area = tkinter.Text(root, height=5, width=30)
         notes_area.place(x=20, y=400)
+
+        # this button adds info to file and closes window
+        self.quit_button = tkinter.Button(root,
+            text = 'Enter',
+            command = root.destroy)
+        self.quit_button.place(x=20, y=500)
 
         tkinter.mainloop()
 
