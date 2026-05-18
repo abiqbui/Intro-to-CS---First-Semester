@@ -76,8 +76,7 @@ class MyGUI:
         title_entry = tkinter.Entry(root)
         title_entry.place(x=70, y=10)
 
-        # get title
-        title = self.title_entry.get()
+        
 
         # this is the author entry
         author_label = tkinter.Label(root, text = "Author: ")
@@ -208,6 +207,10 @@ class MyGUI:
             text = 'Enter',
             command = root.destroy)
         self.quit_button.place(x=20, y=500)
+
+        # get title
+        title = self.title_entry.get()
+        
 
 
         tkinter.mainloop()
