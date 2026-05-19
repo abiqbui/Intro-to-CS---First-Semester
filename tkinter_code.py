@@ -70,6 +70,10 @@ class MyGUI:
         # this is the title entry
         root = tkinter.Tk()
         root.geometry("300x550")
+
+        self.save = 
+
+        
         title_label = tkinter.Label(root, text = "Title: ")
         title_label.place(x=20, y=10)
 
@@ -85,8 +89,7 @@ class MyGUI:
         author_entry = tkinter.Entry(root)
         author_entry.place(x=70, y=40)
 
-        # get author
-        author = self.author_entry.get()
+        
 
         # this is the page # entry
 
@@ -96,8 +99,7 @@ class MyGUI:
         pages_entry = tkinter.Entry(root)
         pages_entry.place(x=100, y=70)
 
-        # get pages
-        pages = self.pages_entry.get()
+        
 
         # this is the 'who recommended' entry
 
@@ -107,8 +109,7 @@ class MyGUI:
         who_entry = tkinter.Entry(root)
         who_entry.place(x=140, y=100)
 
-        # get who
-        who = self.who_entry.get()
+        
 
         # this is the checkbutton for genres
 
@@ -199,18 +200,29 @@ class MyGUI:
         why_text = tkinter.Text(root, height=5, width=30)
         why_text.place(x=20, y=400)
 
-        # get why
-        why = self.why_text.get()
+
 
         # this button adds info to file and closes window
         self.quit_button = tkinter.Button(root,
             text = 'Enter',
-            command = root.destroy)
+            command = lambda: self.save=1)
         self.quit_button.place(x=20, y=500)
+        if self.save == 1:
+            # get title
+            title = self.title_entry.get()
+            # get author
+            author = self.author_entry.get()
+            # get pages
+            pages = self.pages_entry.get()
+            # get who
+            who = self.who_entry.get()
+            # get why
+            why = self.why_text.get()
 
-        # get title
-        title = self.title_entry.get()
-        
+            # final book info
+            book = Unread(title, author, genre, pages, who, why)
+
+            root.destroy
 
 
         tkinter.mainloop()
@@ -310,6 +322,25 @@ class MyGUI:
         self.top_frame.place(x=20, y=160)
         self.bot_frame.place(x=20, y=340)
 
+        # get genre(s)
+        genre = []
+        if self.cb_var1 == 1:
+            genre.append('Romance')
+        elif self.cb_var2 == 1:
+            genre.append('Fantasy')
+        elif self.cb_var3 == 1:
+            genre.append('Sci-Fi')
+        elif self.cb_var4 == 1:
+            genre.append('Thriller/Horror')
+        elif self.cb_var5 == 1:
+            genre.append('Mystery')
+        elif self.cb_var6 == 1:
+            genre.append('Historical Fiction')
+        elif self.cb_var7 == 1:
+            genre.append('YA (Young Adult)')
+        elif self.cb_var8 == 1:
+            genre.append('Nonfiction')
+
 
         # this is the text for final thoughts
         notes_label = tkinter.Label(root, text = "Final thoughts: ")
@@ -325,6 +356,17 @@ class MyGUI:
         self.quit_button.place(x=20, y=500)
 
         tkinter.mainloop()
+
+        # get title
+        title = self.title_entry.get()
+        # get author
+        author = self.author_entry.get()
+        # get pages
+        pages = self.pages_entry.get()
+        # get who
+        who = self.who_entry.get()
+        # get why
+        why = self.why_text.get()
 
     def books_window(self):
         root = tkinter.Tk()
