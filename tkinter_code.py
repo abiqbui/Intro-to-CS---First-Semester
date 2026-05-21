@@ -67,54 +67,52 @@ class MyGUI:
         tkinter.mainloop()
 
     def unread_window(self):
-        # this is the title entry
+    
         root = tkinter.Tk()
         root.geometry("300x550")
 
-        self.save = 
+        # this is the title entry
+        self.title_label = tkinter.Label(root, text = "Title: ")
+        self.title_label.place(x=20, y=10)
 
-        
-        title_label = tkinter.Label(root, text = "Title: ")
-        title_label.place(x=20, y=10)
-
-        title_entry = tkinter.Entry(root)
-        title_entry.place(x=70, y=10)
+        self.title_entry = tkinter.Entry(root)
+        self.title_entry.place(x=70, y=10)
 
         
 
         # this is the author entry
-        author_label = tkinter.Label(root, text = "Author: ")
-        author_label.place(x=20, y=40)
+        self.author_label = tkinter.Label(root, text = "Author: ")
+        self.author_label.place(x=20, y=40)
 
-        author_entry = tkinter.Entry(root)
-        author_entry.place(x=70, y=40)
+        self.author_entry = tkinter.Entry(root)
+        self.author_entry.place(x=70, y=40)
 
         
 
         # this is the page # entry
 
-        pages_label = tkinter.Label(root, text = "# of Pages: ")
-        pages_label.place(x=20, y=70)
+        self.pages_label = tkinter.Label(root, text = "# of Pages: ")
+        self.pages_label.place(x=20, y=70)
 
-        pages_entry = tkinter.Entry(root)
-        pages_entry.place(x=100, y=70)
+        self.pages_entry = tkinter.Entry(root)
+        self.pages_entry.place(x=100, y=70)
 
         
 
         # this is the 'who recommended' entry
 
-        who_label = tkinter.Label(root, text = "Recommended by: ")
-        who_label.place(x=20, y=100)
+        self.who_label = tkinter.Label(root, text = "Recommended by: ")
+        self.who_label.place(x=20, y=100)
 
-        who_entry = tkinter.Entry(root)
-        who_entry.place(x=140, y=100)
+        self.who_entry = tkinter.Entry(root)
+        self.who_entry.place(x=140, y=100)
 
         
 
         # this is the checkbutton for genres
 
-        genre_label = tkinter.Label(root, text = "Genre(s): ")
-        genre_label.place(x=20, y=130)
+        self.genre_label = tkinter.Label(root, text = "Genre(s): ")
+        self.genre_label.place(x=20, y=130)
         
         self.top_frame = tkinter.Frame(root)
         self.bot_frame = tkinter.Frame(root)
@@ -162,6 +160,47 @@ class MyGUI:
             text = 'Nonfiction',
             variable = self.cb_var8)
 
+    
+        
+        self.cb1.pack()
+        self.cb2.pack()
+        self.cb3.pack()
+        self.cb4.pack()
+        self.cb5.pack()
+        self.cb6.pack()
+        self.cb7.pack()
+        self.cb8.pack()
+        self.top_frame.place(x=20, y=160)
+        self.bot_frame.place(x=20, y=340)
+
+
+        # this is the text for  'why to read'
+        self.why_label = tkinter.Label(root, text = "Why to read: ")
+        self.why_label.place(x=20, y=370)
+        
+        self.why_text = tkinter.Text(root, height=5, width=30)
+        self.why_text.place(x=20, y=400)
+
+
+        # these buttons adds info to file and closes window
+        self.enter_button = tkinter.Button(root,
+            text = 'Enter',
+            command = self.get_unread_info)
+        self.enter_button.place(x=20, y=500)
+
+        self.quit_button = tkinter.Button(root,
+            text = 'Quit',
+            command = root.destroy)
+        self.quit_button.place(x=65, y=500)
+
+        tkinter.mainloop()
+    def get_unread_info(self):
+        # get title
+        title = str(self.title_entry.get())
+        # get author
+        author = self.author_entry.get()
+        # get pages
+        pages = self.pages_entry.get()
         # get genre(s)
         genre = []
         if self.cb_var1 == 1:
@@ -180,57 +219,22 @@ class MyGUI:
             genre.append('YA (Young Adult)')
         elif self.cb_var8 == 1:
             genre.append('Nonfiction')
-        
-        self.cb1.pack()
-        self.cb2.pack()
-        self.cb3.pack()
-        self.cb4.pack()
-        self.cb5.pack()
-        self.cb6.pack()
-        self.cb7.pack()
-        self.cb8.pack()
-        self.top_frame.place(x=20, y=160)
-        self.bot_frame.place(x=20, y=340)
+        # get who
+        who = self.who_entry.get()
+        # get why
+        why = self.why_text.get(1.0)
+        # final book info
+        book = Unread(title, author, genre, pages, who, why)
+        tkinter.messagebox.showinfo("Entered", f"You added {title} to your file!")
 
-
-        # this is the text for  'why to read'
-        why_label = tkinter.Label(root, text = "Why to read: ")
-        why_label.place(x=20, y=370)
-        
-        why_text = tkinter.Text(root, height=5, width=30)
-        why_text.place(x=20, y=400)
-
-
-
-        # this button adds info to file and closes window
-        self.quit_button = tkinter.Button(root,
-            text = 'Enter',
-            command = lambda: self.save=1)
-        self.quit_button.place(x=20, y=500)
-        if self.save == 1:
-            # get title
-            title = self.title_entry.get()
-            # get author
-            author = self.author_entry.get()
-            # get pages
-            pages = self.pages_entry.get()
-            # get who
-            who = self.who_entry.get()
-            # get why
-            why = self.why_text.get()
-
-            # final book info
-            book = Unread(title, author, genre, pages, who, why)
-
-            root.destroy
-
-
-        tkinter.mainloop()
+            
         
     def read_window(self):
         
         root = tkinter.Tk()
         root.geometry("300x550")
+
+        
         title_label = tkinter.Label(root, text = "Title: ")
         title_label.place(x=20, y=10)
 
