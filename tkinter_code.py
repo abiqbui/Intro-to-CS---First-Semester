@@ -64,6 +64,9 @@ class MyGUI:
         self.add_unread.pack(pady=5)
         self.add_read.pack(pady=5)
         self.see_booklist.pack(pady=5)
+
+        self.unread_books = []
+        self.read_books = []
         tkinter.mainloop()
 
     def unread_window(self):
@@ -194,11 +197,12 @@ class MyGUI:
         self.quit_button.place(x=65, y=500)
 
         tkinter.mainloop()
+        
     def get_unread_info(self):
         # get title
         title = str(self.title_entry.get())
         # get author
-        author = self.author_entry.get()
+        author = str(self.author_entry.get())
         # get pages
         pages = self.pages_entry.get()
         # get genre(s)
@@ -225,49 +229,58 @@ class MyGUI:
         why = self.why_text.get(1.0)
         # final book info
         book = Unread(title, author, genre, pages, who, why)
-        tkinter.messagebox.showinfo("Entered", f"You added {title} to your file!")
+        self.unread_books.append(book)
+        tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
             
         
     def read_window(self):
-        
+    
         root = tkinter.Tk()
         root.geometry("300x550")
 
-        
-        title_label = tkinter.Label(root, text = "Title: ")
-        title_label.place(x=20, y=10)
+        # this is the title entry
+        self.title_label = tkinter.Label(root, text = "Title: ")
+        self.title_label.place(x=20, y=10)
 
-        title_entry = tkinter.Entry(root)
-        title_entry.place(x=70, y=10)
+        self.title_entry = tkinter.Entry(root)
+        self.title_entry.place(x=70, y=10)
+
+        
 
         # this is the author entry
-        author_label = tkinter.Label(root, text = "Author: ")
-        author_label.place(x=20, y=40)
+        self.author_label = tkinter.Label(root, text = "Author: ")
+        self.author_label.place(x=20, y=40)
 
-        author_entry = tkinter.Entry(root)
-        author_entry.place(x=70, y=40)
+        self.author_entry = tkinter.Entry(root)
+        self.author_entry.place(x=70, y=40)
+
+        
 
         # this is the page # entry
 
-        pages_label = tkinter.Label(root, text = "# of Pages: ")
-        pages_label.place(x=20, y=70)
+        self.pages_label = tkinter.Label(root, text = "# of Pages: ")
+        self.pages_label.place(x=20, y=70)
 
-        pages_entry = tkinter.Entry(root)
-        pages_entry.place(x=100, y=70)
+        self.pages_entry = tkinter.Entry(root)
+        self.pages_entry.place(x=100, y=70)
+
+        
 
         # this is the rating entry
 
-        rating_label = tkinter.Label(root, text = "__ out of 10: ")
-        rating_label.place(x=20, y=100)
+        self.rating_label = tkinter.Label(root, text = "__ out of 10: ")
+        self.rating_label.place(x=20, y=100)
 
-        rating_entry = tkinter.Entry(root)
-        rating_entry.place(x=110, y=100)
+        self.rating_entry = tkinter.Entry(root)
+        self.rating_entry.place(x=140, y=100)
+
+        
 
         # this is the checkbutton for genres
 
-        genre_label = tkinter.Label(root, text = "Genre(s): ")
-        genre_label.place(x=20, y=130)
+        self.genre_label = tkinter.Label(root, text = "Genre(s): ")
+        self.genre_label.place(x=20, y=130)
         
         self.top_frame = tkinter.Frame(root)
         self.bot_frame = tkinter.Frame(root)
@@ -280,6 +293,7 @@ class MyGUI:
         self.cb_var6 = tkinter.IntVar()
         self.cb_var7 = tkinter.IntVar()
         self.cb_var8 = tkinter.IntVar()
+        
         self.cb_var1.set(0)
         self.cb_var2.set(0)
         self.cb_var3.set(0)
@@ -314,6 +328,7 @@ class MyGUI:
             text = 'Nonfiction',
             variable = self.cb_var8)
 
+    
         
         self.cb1.pack()
         self.cb2.pack()
@@ -326,6 +341,35 @@ class MyGUI:
         self.top_frame.place(x=20, y=160)
         self.bot_frame.place(x=20, y=340)
 
+
+        # this is the text for  final thoughts
+        self.notes_label = tkinter.Label(root, text = "Final thoughts: ")
+        self.notes_label.place(x=20, y=370)
+        
+        self.notes_text = tkinter.Text(root, height=5, width=30)
+        self.notes_text.place(x=20, y=400)
+
+
+        # these buttons adds info to file and closes window
+        self.enter_button = tkinter.Button(root,
+            text = 'Enter',
+            command = self.get_read_info)
+        self.enter_button.place(x=20, y=500)
+
+        self.quit_button = tkinter.Button(root,
+            text = 'Quit',
+            command = root.destroy)
+        self.quit_button.place(x=65, y=500)
+
+        tkinter.mainloop()
+        
+    def get_read_info(self):
+        # get title
+        title = str(self.title_entry.get())
+        # get author
+        author = str(self.author_entry.get())
+        # get pages
+        pages = float(self.pages_entry.get())
         # get genre(s)
         genre = []
         if self.cb_var1 == 1:
@@ -344,36 +388,58 @@ class MyGUI:
             genre.append('YA (Young Adult)')
         elif self.cb_var8 == 1:
             genre.append('Nonfiction')
+        # get rating
+        rating = self.rating_entry.get()
+        # get notes
+        notes = self.notes_text.get(1.0)
+        # final book info
+        book = Unread(title, author, genre, pages, rating, notes)
+        self.read_books.append(book)
+        tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
-
-        # this is the text for final thoughts
-        notes_label = tkinter.Label(root, text = "Final thoughts: ")
-        notes_label.place(x=20, y=370)
-        
-        notes_area = tkinter.Text(root, height=5, width=30)
-        notes_area.place(x=20, y=400)
-
-        # this button adds info to file and closes window
-        self.quit_button = tkinter.Button(root,
-            text = 'Enter',
-            command = root.destroy)
-        self.quit_button.place(x=20, y=500)
-
-        tkinter.mainloop()
-
-        # get title
-        title = self.title_entry.get()
-        # get author
-        author = self.author_entry.get()
-        # get pages
-        pages = self.pages_entry.get()
-        # get who
-        who = self.who_entry.get()
-        # get why
-        why = self.why_text.get()
+            
 
     def books_window(self):
         root = tkinter.Tk()
+
+        self.top_frame = tkinter.Frame(root)
+        self.bot_frame = tkinter.Frame(root)
+
+
+        self.cb_var1 = tkinter.IntVar()
+        self.cb_var2 = tkinter.IntVar()
+
+        self.cb_var1.set(0)
+        self.cb_var2.set(0)
+
+        self.cb1 = tkinter.Checkbutton(self.top_frame,
+                                       text = 'Unread',
+                                       variable = self.cb_var1)
+        self.cb2 = tkinter.Checkbutton(self.top_frame,
+                                       text = 'Read',
+                                       variable = self.cb_var2)
+       
+        self.cb1.pack()
+        self.cb2.pack()
+
+        if self.cb_var1 == 1:
+
+            self.listbox = tkinter.Listbox(root, height = 7, width = 12)
+            self.listbox.pack(padx = 10, pady = 10)
+            self.quit_button = tkinter.Button(root,
+                                          text = 'Quit',
+                                          command = self.main_window.destroy)
+            for book in self.unread_books:
+                self.listbox.insert(tkinter.END,book)
+            self.quit_button.pack(side = 'bottom')
+        tkinter.mainloop()
+            
+
+
+
+
+        
+        
         
 
         
