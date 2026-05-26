@@ -65,8 +65,8 @@ class MyGUI:
         self.add_read.pack(pady=5)
         self.see_booklist.pack(pady=5)
 
-        self.unread_books = []
-        self.read_books = []
+        self.unread_books = set()
+        self.read_books = set()
         tkinter.mainloop()
 
     def unread_window(self):
@@ -204,7 +204,7 @@ class MyGUI:
         # get author
         author = str(self.author_entry.get())
         # get pages
-        pages = self.pages_entry.get()
+        pages = str(self.pages_entry.get())
         # get genre(s)
         genre = []
         if self.cb_var1 == 1:
@@ -224,12 +224,12 @@ class MyGUI:
         elif self.cb_var8 == 1:
             genre.append('Nonfiction')
         # get who
-        who = self.who_entry.get()
+        who = str(self.who_entry.get())
         # get why
-        why = self.why_text.get(1.0)
+        why = str(self.why_text.get(1.0))
         # final book info
         book = Unread(title, author, genre, pages, who, why)
-        self.unread_books.append(book)
+        self.unread_books.add(book)
         tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
             
@@ -369,7 +369,7 @@ class MyGUI:
         # get author
         author = str(self.author_entry.get())
         # get pages
-        pages = float(self.pages_entry.get())
+        pages = str(self.pages_entry.get())
         # get genre(s)
         genre = []
         if self.cb_var1 == 1:
@@ -389,12 +389,12 @@ class MyGUI:
         elif self.cb_var8 == 1:
             genre.append('Nonfiction')
         # get rating
-        rating = self.rating_entry.get()
+        rating = str(self.rating_entry.get())
         # get notes
-        notes = self.notes_text.get(1.0)
+        notes = str(self.notes_text.get(1.0))
         # final book info
         book = Unread(title, author, genre, pages, rating, notes)
-        self.read_books.append(book)
+        self.read_books.add(book)
         tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
             
@@ -402,36 +402,24 @@ class MyGUI:
     def books_window(self):
         root = tkinter.Tk()
 
-        self.top_frame = tkinter.Frame(root)
-        self.bot_frame = tkinter.Frame(root)
+        all_books = self.unread_books.union(self.read_books)
+
+        self.listbox = tkinter.Listbox(root,
+                                       height = 7,
+                                       width = 12)
 
 
-        self.cb_var1 = tkinter.IntVar()
-        self.cb_var2 = tkinter.IntVar()
+        for book in all_books:
+            self.listbox.insert(tkinter.END,book)
 
-        self.cb_var1.set(0)
-        self.cb_var2.set(0)
+        self.quit_button = tkinter.Button(root,
+            text = 'Quit',
+            command = root.destroy)
 
-        self.cb1 = tkinter.Checkbutton(self.top_frame,
-                                       text = 'Unread',
-                                       variable = self.cb_var1)
-        self.cb2 = tkinter.Checkbutton(self.top_frame,
-                                       text = 'Read',
-                                       variable = self.cb_var2)
-       
-        self.cb1.pack()
-        self.cb2.pack()
-
-        if self.cb_var1 == 1:
-
-            self.listbox = tkinter.Listbox(root, height = 7, width = 12)
-            self.listbox.pack(padx = 10, pady = 10)
-            self.quit_button = tkinter.Button(root,
-                                          text = 'Quit',
-                                          command = self.main_window.destroy)
-            for book in self.unread_books:
-                self.listbox.insert(tkinter.END,book)
-            self.quit_button.pack(side = 'bottom')
+        self.listbox.pack()
+            
+        self.quit_button.pack(side = 'bottom')
+        
         tkinter.mainloop()
             
 
