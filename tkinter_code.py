@@ -32,6 +32,8 @@ class Read(Book):
     
     def get_notes(self):
         return self.notes
+    def __str__(self):
+        return f"{self.title}, {self.author}, {self.genre}, {self.pages}, {self.rating}, {self.notes}"
 
 class Unread(Book):
 
@@ -45,6 +47,8 @@ class Unread(Book):
     
     def get_who(self):
         return self.who
+    def __str__(self):
+        return f'{self.title}, {self.author}, {self.genre}, {self.pages}, {self.why}, {self.who}'
 
 
 class MyGUI:
@@ -228,8 +232,8 @@ class MyGUI:
         # get why
         why = str(self.why_text.get(1.0))
         # final book info
-        book = Unread(title, author, genre, pages, who, why)
-        self.unread_books.add(book)
+        book = Read(title, author, genre, pages, who, why)
+        self.unread_books.add(book.__str__())
         tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
             
@@ -394,7 +398,7 @@ class MyGUI:
         notes = str(self.notes_text.get(1.0))
         # final book info
         book = Unread(title, author, genre, pages, rating, notes)
-        self.read_books.add(book)
+        self.read_books.add(book.__str__())
         tkinter.messagebox.showinfo("Entered", f"You added {title} by {author}!")
 
             
@@ -403,6 +407,8 @@ class MyGUI:
         root = tkinter.Tk()
 
         all_books = self.unread_books.union(self.read_books)
+
+        print(all_books)
 
         self.listbox = tkinter.Listbox(root,
                                        height = 7,
