@@ -135,17 +135,39 @@ def archive(): # open file and read the file
     look_at_history = input("Would you like to look at your archive? Input yes if so, input no if otherwise: ")
     # if you answer yes to the question above, code with open csv file in read mode, and print the data for you to read
     while look_at_history == "yes" or look_at_history == "YES" or look_at_history == "Yes":
-        with open("final.csv", "r", newline="") as f:
-            reader = csv.reader(f)
-            # moves to the first line to read
-            f.seek(0)
-            # read the file and print it to see
-            data_read = []
-            for row in reader:
-                data_read.append(row)
-            print(data_read)
-        # asks if user would like to add another book after viewing their archive
-        more_books()
+        which_one = input("Would you like to look at read books added, unread books added, or all books entered? (Enter 'R' for read, 'U' for unread, or 'A' for all)")
+        if which_one == "R":
+            with open("read_books.csv", "r", newline="") as f:
+                reader = csv.reader(f)
+                # moves to the first line to read
+                f.seek(0)
+                # read the file and print it to see
+                data_read = []
+                for row in reader:
+                    data_read.append(row)
+                print(data_read)
+        elif which_one == 'U':
+            with open("unread_books.csv", "r", newline="") as f:
+                            reader = csv.reader(f)
+                            # moves to the first line to read
+                            f.seek(0)
+                            # read the file and print it to see
+                            data_read = []
+                            for row in reader:
+                                data_read.append(row)
+                            print(data_read)
+        elif which_one == 'A':
+                    with open("all_books.csv", "r", newline="") as f:
+                                    reader = csv.reader(f)
+                                    # moves to the first line to read
+                                    f.seek(0)
+                                    # read the file and print it to see
+                                    data_read = []
+                                    for row in reader:
+                                        data_read.append(row)
+                                    print(data_read)
+            # asks if user would like to add another book after viewing their archive
+            more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
     else:
         more_books()
