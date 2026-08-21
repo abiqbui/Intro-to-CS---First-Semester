@@ -103,13 +103,14 @@ def read_book(): # input all the values for your book (ie. title, author, ect) a
     genre = input('Genre: ')
     pages = input('Page Count: ')
     rating = input('Rating(_/5): ')
+    notes = input('Final thoughts: ')
     # open file to add your inputs (append mode so it saves)
-    f = open("final.csv", "a", newline="")
+    f = open("read_books.csv", "a", newline="")
     # establishes what order the inputs are supposed to be in
-    book_details = Read(title, author, genre, pages, rating)
+    book_details = Read(title, author, genre, pages, rating, notes)
     # writes your inputs into the file
     writer = csv.writer(f)
-    writer.writerow(book_details)
+    writer.writerow(book_details.__str__)
     # close file
     f.close
 
@@ -119,14 +120,16 @@ def unread_book(): # input all the values for your book (ie. title, author, ect)
     author = input('Author: ')
     genre = input('Genre: ')
     pages = input('Page Count: ')
-    rating = input('Rating(_/5): ')
+    why = input('Why to read: ')
+    who = input('Recommended by: ')
+    
     # open file to add your inputs (append mode so it saves)
-    f = open("final.csv", "a", newline="")
+    f = open("unread_books.csv", "a", newline="")
     # establishes what order the inputs are supposed to be in
-    book_details = Unread(title, author, genre, pages, rating)
+    book_details = Unread(title, author, genre, pages, why, who)
     # writes your inputs into the file
     writer = csv.writer(f)
-    writer.writerow(book_details)
+    writer.writerow(book_details.__str__)
     # close file
     f.close
 
@@ -157,15 +160,15 @@ def archive(): # open file and read the file
                                 data_read.append(row)
                             print(data_read)
         elif which_one == 'A':
-                    with open("all_books.csv", "r", newline="") as f:
-                                    reader = csv.reader(f)
-                                    # moves to the first line to read
-                                    f.seek(0)
-                                    # read the file and print it to see
-                                    data_read = []
-                                    for row in reader:
-                                        data_read.append(row)
-                                    print(data_read)
+            with open("all_books.csv", "r", newline="") as f:
+                            reader = csv.reader(f)
+                            # moves to the first line to read
+                            f.seek(0)
+                            # read the file and print it to see
+                            data_read = []
+                            for row in reader:
+                                data_read.append(row)
+                            print(data_read)
             # asks if user would like to add another book after viewing their archive
             more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
@@ -180,9 +183,9 @@ def more_books(): # add more books to save to the file
     if add_book == "yes" or add_book == "YES" or add_book == "Yes":
         read_or_not = input("Are you adding a read book or an unread book? (Enter 'R' for read or 'U' for unread): ")
         if read_or_not == "R":
-            unread_book()
-        elif read_or_not == "U":
             read_book()
+        elif read_or_not == "U":
+            unread_book()
         else:
             print("Not a valid input.")
             more_books()
