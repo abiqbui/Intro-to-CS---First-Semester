@@ -159,16 +159,6 @@ def archive(): # open file and read the file
                             for row in reader:
                                 data_read.append(row)
                             print(data_read)
-        elif which_one == 'A':
-            with open("all_books.csv", "r", newline="") as f:
-                            reader = csv.reader(f)
-                            # moves to the first line to read
-                            f.seek(0)
-                            # read the file and print it to see
-                            data_read = []
-                            for row in reader:
-                                data_read.append(row)
-                            print(data_read)
             # asks if user would like to add another book after viewing their archive
             more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
