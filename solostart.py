@@ -11,69 +11,6 @@
 import csv 
 
 
-
-class Book():
-
-    def __init__(self, title, author, genre, pages):
-        self.title = title
-        self.author = author
-        self.genre = genre
-        self.pages = pages
-
-    def get_title(self):
-        return self.title
-    
-    def get_author(self):
-        return self.author
-    
-    def get_genre(self):
-        return self.genre
-    
-    def get_pages(self):
-        return self.pages
-
-class Read(Book):
-
-    def __init__(self, title, author, genre, pages, rating, notes):
-        Book.__init__(self, title, author, genre, pages)
-        self.rating = rating
-        self.notes = notes
-    
-    def get_rating(self):
-        return self.rating
-    
-    def get_notes(self):
-        return self.notes
-    def __str__(self):
-        return f"{self.title}, {self.author}, {self.genre}, {self.pages}, {self.rating}, {self.notes}"
-
-class Unread(Book):
-
-    def __init__(self, title, author, genre, pages, why, who):
-        Book.__init__(self, title, author, genre, pages)
-        self.why = why
-        self.who = who
-    
-    def get_why(self):
-        return self.why
-    
-    def get_who(self):
-        return self.who
-    def __str__(self):
-        return f'{self.title}, {self.author}, {self.genre}, {self.pages}, {self.why}, {self.who}'
-
-
-def books_file(): # make file and establish the order of details
-    # make csv file (append mode so the line we write in isn't deleted)
-    f = open("all_books.csv", "a", newline="")
-    # establishes the order of details: order the details will be input, saved, and displayed
-    tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating or Rec", "Notes or Why To Read")
-    # writes the tuple with the order of details into the csv file
-    writer = csv.writer(f)
-    writer.writerow(tup1)
-    # close the file
-    f.close
-
 def read_file(): # make file and establish the order of details
     # make csv file (append mode so the line we write in isn't deleted)
     f = open("read_books.csv", "a", newline="")
@@ -107,12 +44,13 @@ def read_book(): # input all the values for your book (ie. title, author, ect) a
     # open file to add your inputs (append mode so it saves)
     f = open("read_books.csv", "a", newline="")
     # establishes what order the inputs are supposed to be in
-    book_details = Read(title, author, genre, pages, rating, notes)
+    book_details = (title, author, genre, pages, rating, notes)
     # writes your inputs into the file
     writer = csv.writer(f)
-    writer.writerow(book_details.__str__)
+    writer.writerow(book_details)
     # close file
     f.close
+    more_books()
 
 def unread_book(): # input all the values for your book (ie. title, author, ect) and add to file
     # define all the variables and get user input (all of your book details)
@@ -122,16 +60,16 @@ def unread_book(): # input all the values for your book (ie. title, author, ect)
     pages = input('Page Count: ')
     why = input('Why to read: ')
     who = input('Recommended by: ')
-    
     # open file to add your inputs (append mode so it saves)
     f = open("unread_books.csv", "a", newline="")
     # establishes what order the inputs are supposed to be in
-    book_details = Unread(title, author, genre, pages, why, who)
+    book_details = (title, author, genre, pages, why, who)
     # writes your inputs into the file
     writer = csv.writer(f)
-    writer.writerow(book_details.__str__)
+    writer.writerow(book_details)
     # close file
     f.close
+    more_books
 
 def archive(): # open file and read the file
     # get user input: do they want to read the file or not?
