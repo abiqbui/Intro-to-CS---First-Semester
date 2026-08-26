@@ -98,7 +98,7 @@ def archive(): # open file and read the file
                                 data_read.append(row)
                             print(data_read)
             # asks if user would like to add another book after viewing their archive
-            more_books()
+        more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
     else:
         more_books()
