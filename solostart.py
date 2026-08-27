@@ -69,7 +69,7 @@ def unread_book(): # input all the values for your book (ie. title, author, ect)
     writer.writerow(book_details)
     # close file
     f.close
-    more_books
+    more_books()
 
 def archive(): # open file and read the file
     # get user input: do they want to read the file or not?
@@ -87,6 +87,7 @@ def archive(): # open file and read the file
                 for row in reader:
                     data_read.append(row)
                 print(data_read)
+            more_books()
         elif which_one == 'U':
             with open("unread_books.csv", "r", newline="") as f:
                             reader = csv.reader(f)
@@ -98,7 +99,7 @@ def archive(): # open file and read the file
                                 data_read.append(row)
                             print(data_read)
             # asks if user would like to add another book after viewing their archive
-        more_books()
+            more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
     else:
         more_books()
