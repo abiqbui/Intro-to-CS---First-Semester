@@ -87,17 +87,39 @@ def archive(): # open file and read the file
                 for row in reader:
                     data_read.append(row)
                 print(data_read)
+            deleteR = input("Would you like to delete an item on this list? (Enter 'yes' if so, 'no' if otherwise): ")
+            if deleteR == 'yes' or deleteR == 'Yes' or deleteR == 'YES':
+                which_itemR = int(input('Enter either 1, 2, 3.... etc. to delete that item: '))
+                removed = which_itemR - 1
+                del data_read[removed]
+                print(data_read)
+            with open("read_books.csv", "w", newline="") as f:
+                for item in data_read:
+                    writer = csv.writer(f)
+                    writer.writerow(item)
+                
             more_books()
         elif which_one == 'U':
             with open("unread_books.csv", "r", newline="") as f:
-                            reader = csv.reader(f)
-                            # moves to the first line to read
-                            f.seek(0)
-                            # read the file and print it to see
-                            data_read = []
-                            for row in reader:
-                                data_read.append(row)
+                reader = csv.reader(f)
+                # moves to the first line to read
+                f.seek(0)
+                # read the file and print it to see
+                data_read = []
+                for row in reader:
+                    data_read.append(row)
+                print(data_read)
+            deleteU = input("Would you like to delete an item on this list? (Enter 'yes' if so, 'no' if otherwise): ")
+                        if deleteU == 'yes' or deleteU == 'Yes' or deleteU == 'YES':
+                            which_itemR = int(input('Enter either 1, 2, 3.... etc. to delete that item: '))
+                            removed = which_itemR - 1
+                            del data_read[removed]
                             print(data_read)
+                        with open("unread_books.csv", "w", newline="") as f:
+                            for item in data_read:
+                                writer = csv.writer(f)
+                                writer.writerow(item)
+
             # asks if user would like to add another book after viewing their archive
             more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
