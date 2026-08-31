@@ -76,7 +76,7 @@ def archive(): # open file and read the file
     look_at_history = input("Would you like to look at your archive? Input yes if so, input no if otherwise: ")
     # if you answer yes to the question above, code with open csv file in read mode, and print the data for you to read
     while look_at_history == "yes" or look_at_history == "YES" or look_at_history == "Yes":
-        which_one = input("Would you like to look at read books added, unread books added, or all books entered? (Enter 'R' for read, 'U' for unread, or 'A' for all)")
+        which_one = input("Would you like to look at read books added or unread books added? (Enter 'R' for read, 'U' for unread): ")
         if which_one == "R":
             with open("read_books.csv", "r", newline="") as f:
                 reader = csv.reader(f)
@@ -110,18 +110,17 @@ def archive(): # open file and read the file
                     data_read.append(row)
                 print(data_read)
             deleteU = input("Would you like to delete an item on this list? (Enter 'yes' if so, 'no' if otherwise): ")
-                        if deleteU == 'yes' or deleteU == 'Yes' or deleteU == 'YES':
-                            which_itemR = int(input('Enter either 1, 2, 3.... etc. to delete that item: '))
-                            removed = which_itemR - 1
-                            del data_read[removed]
-                            print(data_read)
-                        with open("unread_books.csv", "w", newline="") as f:
-                            for item in data_read:
-                                writer = csv.writer(f)
-                                writer.writerow(item)
+            if deleteU == 'yes' or deleteU == 'Yes' or deleteU == 'YES':
+                which_itemR = int(input('Enter either 1, 2, 3.... etc. to delete that item: '))
+                removed = which_itemR - 1
+                del data_read[removed]
+                print(data_read)
+                with open("unread_books.csv", "w", newline="") as f:
+                    for item in data_read:
+                        writer = csv.writer(f)
+                        writer.writerow(item)
+        more_books()
 
-            # asks if user would like to add another book after viewing their archive
-            more_books()
     # if the user doesn't want to view their archive, ask if they would like to add another book
     else:
         more_books()
