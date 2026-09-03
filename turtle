@@ -1,34 +1,75 @@
 import turtle as t
 from turtle import *
 
-t.pen(fillcolor="red", pencolor='orange', pensize=5)
+t.pen(fillcolor="dark green", pencolor='green', pensize=5)
 t.begin_fill()
-forward(300)
-left(150)
-forward(200)
-left(68)
-forward(163)
+forward(50)
+backward(100)
+left(120)
+forward(100)
+right(60)
+forward(100)
+right(60)
+forward(100)
+right(60)
+forward(100)
+right(60)
+forward(100)
 t.end_fill()
-left(142)
-right(10)
-forward(250)
-backward(250)
-right(50)
 
-x = 5
+t.begin_fill()
+left(60)
+forward(100)
+backward(100)
+right(120)
+forward(100)
+left(60)
+forward(100)
+left(120)
+forward(200)
+t.end_fill()
 
-while x > 0:
-    t.begin_fill()
-    forward(300)
-    left(150)
-    forward(200)
-    left(68)
-    forward(163)
-    t.end_fill()
-    left(142)
-    right(10)
-    forward(250)
-    backward(250)
-    right(50)
-    x = x-1
+t.begin_fill()
+left(60)
+forward(200)
+left(120)
+forward(100)
+left(60)
+forward(100)
+t.end_fill()
+
+t.begin_fill()
+backward(100)
+right(120)
+forward(100)
+right(60)
+forward(100)
+right(120)
+forward(200)
+right(120)
+forward(100)
+t.end_fill()
+
+t.begin_fill()
+right(60)
+forward(100)
+left(60)
+forward(100)
+right(60)
+forward(100)
+right(120)
+forward(200)
+right(60)
+forward(100)
+t.end_fill()
+
+
+
+
+
+
+
+
     
+
+
