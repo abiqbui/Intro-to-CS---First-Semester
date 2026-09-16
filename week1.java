@@ -24,3 +24,4 @@ public class Main {
         // 5. Close the scanner to free resources
         scanner.close(); 
     }
+}
