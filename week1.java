@@ -4,22 +4,30 @@
 // Time Spent: 
 
 import java.util.Scanner; // 1. Import the Scanner class
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         // 2. Create a Scanner object
         Scanner scanner = new Scanner(System.in);
 
-        // 3. Prompt the user and read a String
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine(); 
+        int x = 3;
+        
+        ArrayList<String> birthdays = new ArrayList<>();
 
-        // 4. Prompt the user and read an Integer
-        System.out.print("Enter your age: ");
-        int age = scanner.nextInt();
+        while (x == 2) {
 
-        // Output the results
-        System.out.println("Hello " + name + "! You are " + age + " years old.");
+
+            // 3. Prompt the user and read a String
+            System.out.print("Enter a birthday: ");
+            String bday = scanner.nextLine(); 
+
+            birthdays.add(bday);
+
+            // Output the results
+            System.out.println(birthdays);
+
+        }
 
         // 5. Close the scanner to free resources
         scanner.close(); 
