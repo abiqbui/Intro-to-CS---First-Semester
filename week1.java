@@ -3,22 +3,23 @@
 // Assignment: Input, Output, Variables, & Arrays
 // Time Spent: 
 
-import java.util.Scanner; // 1. Import the Scanner class
-import java.util.ArrayList;
+import java.util.Scanner; // Import the Scanner class
+import java.util.ArrayList;  // Import the ArrayList class
 
 public class Main {
     public static void main(String[] args) {
-        // 2. Create a Scanner object
+        // Create a Scanner object
         Scanner scanner = new Scanner(System.in);
 
-        int x = 3;
+        int x = 2;
         
+        // Create ArrayList object
         ArrayList<String> birthdays = new ArrayList<>();
 
         while (x == 2) {
 
 
-            // 3. Prompt the user and read a String
+            // Prompt the user and read a String
             System.out.print("Enter a birthday: ");
             String bday = scanner.nextLine(); 
 
