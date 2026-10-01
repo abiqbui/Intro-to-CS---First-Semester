@@ -21,25 +21,42 @@ if look == 'yes' or look == 'Yes' or look == 'YES':
 
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
         // Create a Scanner object
         Scanner scanner = new Scanner(System.in);
 
-        File obj = new File("myfile.txt");
+        File notesFile = new File("notes_file.txt");
         
 
-        System.out.print("Y or N?");
+        System.out.print("Would you like to make a note? (yes or no): ");
         String yon = scanner.nextLine(); 
 
-        if (yon.equals("Y") ) {
-            int x = 2;
-            while (x == 2) {
-                System.out.print("Requirements fufilled");
-            }
+        if (yon.equals("yes") ) {
+            System.out.print("Note: ");
+            String note = scanner.nextLine();
+
+            FileWriter Writer = new FileWriter("notes_file.txt");
+
+            Writer.write(note);
+            Writer.close();
         }
         
+
+        System.out.print("Would you like to look at your note(s)? (yes or no): ");
+        String look = scanner.nextLine();
+
+        if (look.equals("yes") ) {
+            Scanner Reader = new Scanner(notesFile);
+          
+            // Traversing File Data
+          	while (Reader.hasNextLine()) {
+                String data = Reader.nextLine();
+                System.out.println(data);
+            }
+        }
 
         // 5. Close the scanner to free resources
         scanner.close(); 
