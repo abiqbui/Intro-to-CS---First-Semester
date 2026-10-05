@@ -1,63 +1,46 @@
 // Name: Abigail Bui
 // Period: 3
 // Assignment: File Interaction
-// Time Spent: 
+// Time Spent: 2 days?
 
-/*
-ask = input("Would you like to make a note? (yes or no): ")
 
-if ask == 'yes' or ask == 'Yes' or ask == 'YES':
-    note = input("Note: ")
-    with open("notes.txt", "a") as n:
-        n.write(f"{note} \n")
-
-look = input("Would you like to look at your note(s)? (yes or no): ")
-
-if look == 'yes' or look == 'Yes' or look == 'YES':
-    with open("notes.txt", "r") as n:
-        for line in n:
-            print(line)
-*/
 
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
         // Create a Scanner object
         Scanner scanner = new Scanner(System.in);
 
-        File notesFile = new File("notes_file.txt");
+        Path path = Path.of("note.txt");
         
 
         System.out.print("Would you like to make a note? (yes or no): ");
         String yon = scanner.nextLine(); 
 
-        if (yon.equals("yes") ) {
-            System.out.print("Note: ");
-            String note = scanner.nextLine();
+        try{
+            if (yon.equals("yes") ) {
+                System.out.print("Note: ");
+                String note = scanner.nextLine();
 
-            FileWriter Writer = new FileWriter("notes_file.txt");
+                Files.writeString(path, note);
+            }
+            
 
-            Writer.write(note);
-            Writer.close();
-        }
-        
+            System.out.print("Would you like to look at your note? (yes or no): ");
+            String look = scanner.nextLine();
 
-        System.out.print("Would you like to look at your note(s)? (yes or no): ");
-        String look = scanner.nextLine();
-
-        if (look.equals("yes") ) {
-            Scanner Reader = new Scanner(notesFile);
-          
-            // Traversing File Data
-          	while (Reader.hasNextLine()) {
-                String data = Reader.nextLine();
+            if (look.equals("yes") ) {
+                String data = Files.readString(path);
                 System.out.println(data);
             }
-        }
+        } catch (IOException e) {
+            e.printStackTrace();
 
+        }
         // 5. Close the scanner to free resources
         scanner.close(); 
     }
