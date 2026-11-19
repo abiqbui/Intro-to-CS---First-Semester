@@ -43,84 +43,86 @@ class Unread(Book):
 
 
 
-def original_work():
-
-    import csv 
-
-    def make_book_file(): # make file and establish the order of details
-        # make csv file (append mode so the line we write in isn't deleted)
-        f = open("book.csv", "a", newline="")
-        # establishes the order of details: order the details will be input, saved, and displayed
-        tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
-        # writes the tuple with the order of details into the csv file
-        writer = csv.writer(f)
-        writer.writerow(tup1)
-        # close the file
-        f.close
-
-    def make_unread_file(): # make file and establish the order of details
-        # make csv file (append mode so the line we write in isn't deleted)
-        f = open("unread.csv", "a", newline="")
-        # establishes the order of details: order the details will be input, saved, and displayed
-        tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
-        # writes the tuple with the order of details into the csv file
-        writer = csv.writer(f)
-        writer.writerow(tup1)
-        # close the file
-        f.close
-
-    def make_read_file(): # make file and establish the order of details
-        # make csv file (append mode so the line we write in isn't deleted)
-        f = open("read.csv", "a", newline="")
-        # establishes the order of details: order the details will be input, saved, and displayed
-        tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
-        # writes the tuple with the order of details into the csv file
-        writer = csv.writer(f)
-        writer.writerow(tup1)
-        # close the file
-        f.close
 
 
-    def read_book(): # input all the values for your book (ie. title, author, ect) and add to file
-        # define all the variables and get user input (all of your book details)
-        title = input('Title: ')
-        author = input('Author: ')
-        genre = input('Genre: ')
-        pages = input('Page Count: ')
-        rating = input('Rating(_/5): ')
-        # open file to add your inputs (append mode so it saves)
-        f = open("read.csv", "a", newline="")
-        # establishes what order the inputs are supposed to be in
-        book_details = Read(title, author, genre, pages, rating)
-        # writes your inputs into the file
-        writer = csv.writer(f)
-        writer.writerow(book_details)
-        # close file
-        f.close
+import csv 
 
-    def unread_book(): # input all the values for your book (ie. title, author, ect) and add to file
-        # define all the variables and get user input (all of your book details)
-        title = input('Title: ')
-        author = input('Author: ')
-        genre = input('Genre: ')
-        pages = input('Page Count: ')
-        rec = input('Recommended by: ')
-        # open file to add your inputs (append mode so it saves)
-        f = open("unread.csv", "a", newline="")
-        # establishes what order the inputs are supposed to be in
-        book_details = Unread(title, author, genre, pages, rec)
-        # writes your inputs into the file
-        writer = csv.writer(f)
-        writer.writerow(book_details)
-        # close file
-        f.close
+def make_book_file(): # make file and establish the order of details
+    # make csv file (append mode so the line we write in isn't deleted)
+    f = open("book.csv", "a", newline="")
+    # establishes the order of details: order the details will be input, saved, and displayed
+    tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
+    # writes the tuple with the order of details into the csv file
+    writer = csv.writer(f)
+    writer.writerow(tup1)
+    # close the file
+    f.close
 
-    def archive(): # open file and read the file
-        # get user input: do they want to read the file or not?
-        look_at_history = input("Would you like to look at your archive? Input yes if so, input no if otherwise: ")
-        # if you answer yes to the question above, code with open csv file in read mode, and print the data for you to read
-        while look_at_history == "yes" or look_at_history == "YES" or look_at_history == "Yes":
-            with open("final.csv", "r", newline="") as f:
+def make_unread_file(): # make file and establish the order of details
+    # make csv file (append mode so the line we write in isn't deleted)
+    f = open("unread.csv", "a", newline="")
+    # establishes the order of details: order the details will be input, saved, and displayed
+    tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
+    # writes the tuple with the order of details into the csv file
+    writer = csv.writer(f)
+    writer.writerow(tup1)
+    # close the file
+    f.close
+
+def make_read_file(): # make file and establish the order of details
+    # make csv file (append mode so the line we write in isn't deleted)
+    f = open("read.csv", "a", newline="")
+    # establishes the order of details: order the details will be input, saved, and displayed
+    tup1 = ("Title", "Author", "Genre(s)", "Page #", "Rating(_/5)")
+    # writes the tuple with the order of details into the csv file
+    writer = csv.writer(f)
+    writer.writerow(tup1)
+    # close the file
+    f.close
+
+
+def read_book(): # input all the values for your book (ie. title, author, ect) and add to file
+    # define all the variables and get user input (all of your book details)
+    title = input('Title: ')
+    author = input('Author: ')
+    genre = input('Genre: ')
+    pages = input('Page Count: ')
+    rating = input('Rating(_/5): ')
+    # open file to add your inputs (append mode so it saves)
+    f = open("read.csv", "a", newline="")
+    # establishes what order the inputs are supposed to be in
+    book_details = Read(title, author, genre, pages, rating)
+    # writes your inputs into the file
+    writer = csv.writer(f)
+    writer.writerow(book_details)
+    # close file
+    f.close
+
+def unread_book(): # input all the values for your book (ie. title, author, ect) and add to file
+    # define all the variables and get user input (all of your book details)
+    title = input('Title: ')
+    author = input('Author: ')
+    genre = input('Genre: ')
+    pages = input('Page Count: ')
+    rec = input('Recommended by: ')
+    # open file to add your inputs (append mode so it saves)
+    f = open("unread.csv", "a", newline="")
+    # establishes what order the inputs are supposed to be in
+    book_details = Unread(title, author, genre, pages, rec)
+    # writes your inputs into the file
+    writer = csv.writer(f)
+    writer.writerow(book_details)
+    # close file
+    f.close
+
+def archive(): # open file and read the file
+    # get user input: do they want to read the file or not?
+    look_at_history = input("Would you like to look at your archive? Input yes if so, input no if otherwise: ")
+    # if you answer yes to the question above, code with open csv file in read mode, and print the data for you to read
+    while look_at_history == "yes" or look_at_history == "YES" or look_at_history == "Yes":
+        which_arc = input("Would you like to look at your TBR (unread books) or at your finished books? Input 'U' for unread or 'R' for read: ")
+        if which_arc == "U":
+            with open("unread.csv", "r", newline="") as f:
                 reader = csv.reader(f)
                 # moves to the first line to read
                 f.seek(0)
@@ -128,25 +130,42 @@ def original_work():
                 data_read = []
                 for row in reader:
                     data_read.append(row)
-                print(data_read)
+                    print(data_read)
+            more_books()
+        if which_arc == "R":
+            with open("unread.csv", "r", newline="") as f:
+                reader = csv.reader(f)
+                # moves to the first line to read
+                f.seek(0)
+                # read the file and print it to see
+                data_read = []
+                for row in reader:
+                    data_read.append(row)
+                    print(data_read)
             # asks if user would like to add another book after viewing their archive
             more_books()
         # if the user doesn't want to view their archive, ask if they would like to add another book
-        else:
-            more_books()
+    else:
+        more_books()
             
 
-    def more_books(): # add more books to save to the file
-        # get user input: do they want to add another book or no?
-        add_book = input("Would you like to add a book? Input yes if you wish to add a book: ")
-        # if you answer yes to the function above, call the function book() that collects all the input for the new book and adds it to the csv file [look above for more detail]
-        if add_book == "yes" or add_book == "YES" or add_book == "Yes":
-            which = input("Would you like to add a read book ('R') or an unread book ('U'): ")
-
-        # if the user doesn't want to add another book, asks if they want to see their archive
+def more_books(): # add more books to save to the file
+    # get user input: do they want to add another book or no?
+    add_book = input("Would you like to add a book? Input yes if you wish to add a book: ")
+    # if you answer yes to the function above, call the function book() that collects all the input for the new book and adds it to the csv file [look above for more detail]
+    if add_book == "yes" or add_book == "YES" or add_book == "Yes":
+        which = input("Would you like to add a read book ('R') or an unread book ('U'): ")
+        if which == "U":
+            unread_book()
+        elif which == "R":
+            read_book()
         else:
-            archive()
+            print("Not one of the options.")
+            more_books()
+    # if the user doesn't want to add another book, asks if they want to see their archive
+    else:
+        archive()
         
-    # call the function more_books so all the functions are called and can be executed
-    more_books()
+# call the function more_books so all the functions are called and can be executed
+more_books()
 
